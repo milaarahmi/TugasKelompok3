@@ -34,11 +34,10 @@ public class Main {
         int BilPrimaSatu = 0,BilPrimaDua = 0;
         int Jumlah = 0;
 
-        System.out.println("Masukkan Bilangan 1 ");
-        BilPrimaSatu = in.nextInt();
+        System.out.print("\nMenu Jumlah bilangan prima \n");
 
-        System.out.println("Masukkan Bilangan 2 ");
-        BilPrimaDua = in.nextInt();
+        BilPrimaSatu = validatePositiveNumber("Masukkan Bilangan 1: ");
+        BilPrimaDua = validatePositiveNumber("Masukkan Bilangan 2: ");
 
         System.out.println("\nBilangan Prima Antara "+BilPrimaSatu+" dan "+BilPrimaDua+ " adalah ");
 
@@ -66,11 +65,10 @@ public class Main {
         int BilPrimaSatu = 0,BilPrimaDua = 0;
         int Jumlah = 0;
 
-        System.out.println("Masukkan Bilangan 1 ");
-        BilPrimaSatu = in.nextInt();
+        System.out.print("\nMenu Penjumlahan bilangan prima\n");
 
-        System.out.println("Masukkan Bilangan 2 ");
-        BilPrimaDua = in.nextInt();
+        BilPrimaSatu = validatePositiveNumber("Masukkan Bilangan 1: ");
+        BilPrimaDua = validatePositiveNumber("Masukkan Bilangan 2: ");
 
         System.out.println("\nBilangan Prima Antara "+BilPrimaSatu+" dan "+BilPrimaDua+ " adalah ");
 
@@ -111,5 +109,25 @@ public class Main {
         }
 
         return dataMenu;
+    }
+
+    private static int validatePositiveNumber(String text) {
+        int number;
+        do {
+            System.out.print(text);
+
+            while (!in.hasNextInt()) {
+                String input = in.next();
+                System.out.printf("\"%s\" bukan bilangan positif.\n", input);
+                System.out.print(text);
+            }
+
+            number = in.nextInt();
+            if (number < 0 ) {
+                System.out.printf("%s bukan bilangan positif.\n", number);
+            }
+        } while (number < 0);
+
+        return number;
     }
 }
